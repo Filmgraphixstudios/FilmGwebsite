@@ -1,0 +1,580 @@
+
+@font-face {
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+body {
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  background-size: cover;
+  background-position: center;
+  background-image: url(aperture.webp);
+  background-repeat: no-repeat;
+  line-height: 1.5; 
+}
+
+/* Customizations for both vertical and horizontal scrollbars */
+body::-webkit-scrollbar {
+  width: 6px; 
+  height: 6px; 
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #1e1e1e;
+  border-radius: 15px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: orange;
+  border-radius: 5px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: darkorange;
+}
+
+body::-webkit-scrollbar-button:start:decrement,
+body::-webkit-scrollbar-button:end:increment {
+  background-color: #888;
+}
+
+
+/* HEADER */
+
+header {
+  position: relative;
+  padding: 0 2rem;
+  margin-top: 30px;
+}
+
+
+.nav-bar {
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-bar .logo {
+  
+  border-radius: 5px;
+  padding: 0;
+  margin: 0;
+
+}
+
+#logo > img {
+  height: 100%;
+  width: 350px;
+  justify-self: center;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+#logo > img:hover {
+  transform: perspective(800px) rotateX(10deg) rotateY(10deg) scale(1.05) translateZ(50px) translateY(10px);
+}
+
+.nav-bar .links {
+  display: flex;
+  gap: 2rem;
+}
+
+header li {
+  list-style: none;
+  position: relative; /* For positioning pseudo-elements */
+}
+
+header li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  position: relative; /* For positioning pseudo-elements */
+}
+
+header li a:hover {
+  color: orange;
+}
+
+/* Adding a Before Element to Links */
+header li a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  bottom: -10px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+header li a:hover::before {
+  transform: scaleX(1);
+}
+
+/* Adding Hover Effects to List Items */
+header li:hover {
+  transition: background-color 0.3s ease-in-out;
+}
+
+header li:hover a {
+  color: orange;
+}
+
+header li:hover a::before {
+  background-color: #fff;
+}
+
+
+
+.nav-bar .toggle_btn {
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+.action_btn {
+  text-decoration: none;
+  background-color: orange;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.2s ease;
+}
+
+.action_btn:hover {
+  transform: scale(1.05);
+  color: #fff;
+}
+
+.action_btn:active {
+  transform: scale(0.95);
+}
+
+/* DROPDOWN MENU */
+   
+.dropdown_menu {
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: 60px;
+  height: 0;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open {
+  height: auto;
+}
+
+.dropdown_menu_items {
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown_menu_items li {
+  padding: 0.7rem;
+  text-align: center;
+}
+
+.dropdown_menu_items li a {
+  display: block;
+}
+
+.dropdown_menu .action_btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#home {
+  height: 100vh;
+ 
+}
+#photographer {
+  display: flex;
+  position: absolute;
+  top: 25%;
+  right: 65%;
+  width: 500px;
+  height: 550px;
+  z-index: 0;
+  opacity: .3;
+  overflow: hidden;
+}
+#camera {
+  display: flex;
+  position: absolute;
+  top: 49%;
+  left: 69%;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  z-index: 0;
+  opacity: .2;
+  overflow: hidden;
+}
+
+
+#info {
+  display: flex;
+  position: absolute;
+  margin-top: 12vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#info .content {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  color: black;
+  font-weight: 400;
+}
+
+#info h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+#info h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#info p {
+  margin-bottom: 20px;
+}
+
+#info .content .action_btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: orange;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  animation: pulse 2s ease-in 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/***********************************************************************************************************************************
+                                              ABOUT.HTML
+***********************************************************************************************************************************/
+
+
+/* General Styles */
+.container {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* About Section Styles */
+#about {
+  background-color: #292c35;
+  color: #ffffff;
+  padding: 50px 0;
+}
+
+#about h2 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+#about h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+#about p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+#about ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+#about ul li {
+  margin-bottom: 10px;
+}
+
+#about b {
+  font-weight: bold;
+  color: orange;
+}
+
+/* Animated Underline Effect */
+#about h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: orange;
+  margin: 10px auto 0;
+}
+
+/* Hover Effect for List Items */
+#about ul li:hover {
+  transform: translateY(-3px);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+  #about {
+    padding: 30px 0;
+  }
+}
+
+
+
+
+/**********************************************************************************************************************************
+                                              SERVICES.html
+***********************************************************************************************************************************/
+
+#services {
+  padding: 40px;
+  text-align: center;
+}
+
+#services .container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#services-h2 {
+  color: #fff;
+  z-index: 0;
+}
+#serv {
+  text-align: center;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  perspective: 1000px;
+  transition: transform 0.8s ease;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 0;
+  padding: 20px;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgb(247, 182, 4);
+  z-index: 1;
+}
+
+#services .container .action_btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: orange;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  animation: pulse 2s ease-in 2s infinite;
+}
+
+.service-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#services .container .service-icon {
+  width: 55px;
+  height: 55px;
+  border: 2px solid orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: white;
+}
+
+#services .container .service-icon i {
+  font-size: 25px;
+  color: black;
+}
+
+#services .container .service h4 {
+  margin-top: 30px; 
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/********************Gallery styles*****************************/
+                                     
+#gallery {
+  padding: 40px;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.image-container .card {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  margin: 10px;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 0;
+}
+
+.image-container .card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgb(73, 4, 4);
+  z-index: 1;
+}
+
+.image-container .card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+.image-container .card:hover img {
+  transform: scale(1.2);
+  z-index: 1;
+} 
+
+.foot {
+  background-color: rgba(36, 38, 41, 1);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 992px) {
+  .nav-bar .links,
+  .nav-bar .action_btn {
+    display: none;
+  }
+
+  .nav-bar .toggle_btn {
+    display: block;
+  }
+
+  .dropdown_menu {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+
+  }
+  #photographer, #camera {
+    display: none;
+  }
+    
+}
+
+@media (max-width: 576px) {
+  .dropdown_menu {
+    left: 2rem;
+    width: unset;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+  } 
+  #photographer, #camera {
+    display: none;
+  }
+  #info {
+    z-index: 0;
+  }
+}
